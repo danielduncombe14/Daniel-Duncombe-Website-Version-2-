@@ -26,9 +26,9 @@ export default function About() {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0D1321]">
       {/* Hero Banner */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-teal-900 via-blue-900 to-purple-900">
         <div className="absolute inset-0 bg-black/50" />
         <h1 className="relative z-10 text-5xl sm:text-6xl font-bold text-white">
           About Me
@@ -41,8 +41,8 @@ export default function About() {
           {/* Main Biography */}
           <div className="lg:col-span-2 space-y-6">
             <div>
-              <h2 className="text-3xl font-bold mb-4">My Story</h2>
-              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <h2 className="text-3xl font-bold mb-4 text-white">My Story</h2>
+              <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
                   I'm Daniel, a finance and accounting professional who stepped
                   away from the corporate world to embark on a year-long journey
@@ -88,8 +88,8 @@ export default function About() {
             </div>
 
             <div className="pt-8">
-              <h2 className="text-3xl font-bold mb-4">My Philosophy</h2>
-              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <h2 className="text-3xl font-bold mb-4 text-white">My Philosophy</h2>
+              <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
                   I believe the best growth comes from stepping outside of what
                   feels familiar—whether in work, travel, or personal
@@ -109,7 +109,7 @@ export default function About() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Profile Photo */}
-            <Card>
+            <Card className="bg-[#1A1F2E] border-[#2A2F3E]">
               <CardContent className="p-6">
                 <div className="flex justify-center mb-6">
                   <Avatar className="w-48 h-48">
@@ -117,10 +117,10 @@ export default function About() {
                     <AvatarFallback>DD</AvatarFallback>
                   </Avatar>
                 </div>
-                <h3 className="text-xl font-semibold text-center mb-2">
+                <h3 className="text-xl font-semibold text-center mb-2 text-white">
                   Daniel Duncombe
                 </h3>
-                <p className="text-muted-foreground text-center mb-6">
+                <p className="text-gray-400 text-center mb-6">
                   Finance Professional • Traveler • Storyteller
                 </p>
 
@@ -143,16 +143,16 @@ export default function About() {
             </Card>
 
             {/* Quick Facts */}
-            <Card>
+            <Card className="bg-[#1A1F2E] border-[#2A2F3E]">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Quick Facts</h3>
+                <h3 className="text-lg font-semibold mb-4 text-white">Quick Facts</h3>
                 <div className="space-y-4">
                   {quickFacts.map((fact) => (
                     <div key={fact.label} className="flex flex-col gap-1">
-                      <span className="text-sm text-muted-foreground font-medium">
+                      <span className="text-sm text-gray-400 font-medium">
                         {fact.label}
                       </span>
-                      <span className="text-base font-semibold text-foreground">
+                      <span className="text-base font-semibold text-white">
                         {fact.value}
                       </span>
                     </div>
@@ -165,7 +165,7 @@ export default function About() {
 
         {/* Skills Section */}
         <div className="mt-16">
-          <h2 className="text-3xl font-bold mb-6 text-center">
+          <h2 className="text-3xl font-bold mb-6 text-center text-white">
             Skills & Expertise
           </h2>
           <div className="flex flex-wrap justify-center gap-3">

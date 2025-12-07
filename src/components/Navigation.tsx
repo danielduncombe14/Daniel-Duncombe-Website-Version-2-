@@ -7,7 +7,6 @@ import { Menu, X, Moon, Sun } from "lucide-react"
 import { useState, useEffect } from "react"
 
 const NAV_ITEMS = [
-  { path: "/", label: "Home" },
   { path: "/about", label: "About" },
   { path: "/blog/personal", label: "Personal Blog" },
   { path: "/blog/business", label: "Business Blog" },
@@ -37,13 +36,13 @@ export function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0D1321]/95 backdrop-blur-md border-b border-[#2A2F3E]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="hover:opacity-80 transition-opacity">
             <div className="cursor-pointer px-2 py-1 rounded-md">
-              <div className="text-xl font-bold">From Boardrooms to Backroads</div>
-              <div className="text-xs font-normal">by Daniel Duncombe</div>
+              <div className="text-xl font-bold text-white">From Boardrooms to Backroads</div>
+              <div className="text-xs font-normal text-gray-400">by Daniel Duncombe</div>
             </div>
           </Link>
 
@@ -52,8 +51,14 @@ export function Navigation() {
             {NAV_ITEMS.map((item) => (
               <Link key={item.path} href={item.path}>
                 <Button
-                  variant={pathname === item.path ? "secondary" : "ghost"}
+                  variant="ghost"
                   size="sm"
+                  className={pathname === item.path 
+                    ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]" 
+                    : item.label === "Business Blog"
+                    ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]"
+                    : "text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
+                  }
                 >
                   {item.label}
                 </Button>
@@ -63,7 +68,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="ml-2"
+              className="ml-2 text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
               aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
             >
               {theme === "light" ? (
@@ -80,6 +85,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
+              className="text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
               aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
             >
               {theme === "light" ? (
@@ -92,6 +98,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
@@ -100,12 +107,18 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-2">
+          <div className="md:hidden py-4 space-y-2 border-t border-[#2A2F3E]">
             {NAV_ITEMS.map((item) => (
               <Link key={item.path} href={item.path}>
                 <Button
-                  variant={pathname === item.path ? "secondary" : "ghost"}
-                  className="w-full justify-start"
+                  variant="ghost"
+                  className={`w-full justify-start ${
+                    pathname === item.path
+                      ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]"
+                      : item.label === "Business Blog"
+                      ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]"
+                      : "text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}

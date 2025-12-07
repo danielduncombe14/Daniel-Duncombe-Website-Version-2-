@@ -28,7 +28,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ type: strin
 
   if (isLoading) {
     return (
-      <div className="min-h-screen pt-24 pb-16 px-4">
+      <div className="min-h-screen pt-24 pb-16 px-4 bg-[#0D1321]">
         <div className="max-w-4xl mx-auto">
           <Skeleton className="h-8 w-48 mb-8" />
           <Skeleton className="h-[40vh] w-full mb-8 rounded-lg" />
@@ -43,14 +43,14 @@ export default function BlogPostPage({ params }: { params: Promise<{ type: strin
 
   if (isError || !post) {
     return (
-      <div className="min-h-screen pt-24 pb-16 px-4">
+      <div className="min-h-screen pt-24 pb-16 px-4 bg-[#0D1321]">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="text-muted-foreground mb-6">
+          <h1 className="text-4xl font-bold mb-4 text-white">Post Not Found</h1>
+          <p className="text-gray-400 mb-6">
             The post you're looking for doesn't exist or has been removed.
           </p>
           <Link href={backPath}>
-            <Button variant="ghost">
+            <Button variant="ghost" className="text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to {backLabel}
             </Button>
@@ -61,11 +61,11 @@ export default function BlogPostPage({ params }: { params: Promise<{ type: strin
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pt-24 pb-16 bg-[#0D1321]">
       {/* Back Button */}
       <div className="px-4 max-w-4xl mx-auto mb-8">
         <Link href={backPath}>
-          <Button variant="ghost">
+          <Button variant="ghost" className="text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]">
             <ArrowLeft className="mr-2 w-4 h-4" />
             Back to {backLabel}
           </Button>
@@ -85,7 +85,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ type: strin
       {/* Article Content */}
       <article className="max-w-3xl mx-auto px-4">
         {/* Meta Info */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-6">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4" />
             <span>{post.author}</span>
@@ -101,7 +101,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ type: strin
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-6 leading-tight text-white">
           {post.title}
         </h1>
 
@@ -115,7 +115,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ type: strin
         </div>
 
         {/* Content */}
-        <div className="prose prose-lg max-w-none leading-relaxed text-foreground">
+        <div className="prose prose-lg max-w-none leading-relaxed text-gray-300">
           {post.content.split("\n\n").map((paragraph, index) => (
             <p key={index} className="mb-6 text-lg leading-relaxed">
               {paragraph}
@@ -124,9 +124,9 @@ export default function BlogPostPage({ params }: { params: Promise<{ type: strin
         </div>
 
         {/* Footer */}
-        <div className="mt-12 pt-8 border-t border-border">
+        <div className="mt-12 pt-8 border-t border-[#2A2F3E]">
           <Link href={backPath}>
-            <Button variant="outline">
+            <Button variant="outline" className="text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E] border-[#2A2F3E]">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to {backLabel}
             </Button>

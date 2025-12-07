@@ -31,14 +31,14 @@ export default function Credentials() {
   ]
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4">
+    <div className="min-h-screen pt-24 pb-16 px-4 bg-[#0D1321]">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
             Credentials & Expertise
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             A comprehensive overview of my education, certifications, and professional achievements
           </p>
         </div>
@@ -46,8 +46,8 @@ export default function Credentials() {
         {/* Education Timeline */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <GraduationCap className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl font-bold">Education</h2>
+            <GraduationCap className="w-8 h-8 text-[#C77443]" />
+            <h2 className="text-3xl font-bold text-white">Education</h2>
           </div>
 
           {isLoading ? (
@@ -64,22 +64,22 @@ export default function Credentials() {
           ) : (
             <div className="space-y-6">
               {education.map((edu) => (
-                <Card key={edu.id} className="hover:shadow-lg transition-shadow">
+                <Card key={edu.id} className="hover:shadow-lg transition-shadow bg-[#1A1F2E] border-[#2A2F3E]">
                   <CardHeader>
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
-                        <CardTitle className="text-xl mb-2">{edu.title}</CardTitle>
-                        <div className="flex items-center gap-2 text-muted-foreground mb-2">
+                        <CardTitle className="text-xl mb-2 text-white">{edu.title}</CardTitle>
+                        <div className="flex items-center gap-2 text-gray-400 mb-2">
                           <Briefcase className="w-4 h-4" />
                           <span className="font-medium">{edu.organization}</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">{edu.date}</p>
+                        <p className="text-sm text-gray-400">{edu.date}</p>
                       </div>
                     </div>
                   </CardHeader>
                   {edu.description && (
                     <CardContent>
-                      <p className="text-muted-foreground">{edu.description}</p>
+                      <p className="text-gray-400">{edu.description}</p>
                     </CardContent>
                   )}
                 </Card>
@@ -91,8 +91,8 @@ export default function Credentials() {
         {/* Certifications Grid */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <Award className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl font-bold">Certifications</h2>
+            <Award className="w-8 h-8 text-[#C77443]" />
+            <h2 className="text-3xl font-bold text-white">Certifications</h2>
           </div>
 
           {isLoading ? (
@@ -109,15 +109,15 @@ export default function Credentials() {
           ) : (
             <div className="grid md:grid-cols-3 gap-6">
               {certifications.map((cert) => (
-                <Card key={cert.id} className="hover:shadow-lg transition-shadow">
+                <Card key={cert.id} className="hover:shadow-lg transition-shadow bg-[#1A1F2E] border-[#2A2F3E]">
                   <CardHeader>
-                    <CardTitle className="text-lg mb-2">{cert.title}</CardTitle>
-                    <p className="text-sm text-muted-foreground mb-1">{cert.organization}</p>
-                    <p className="text-xs text-muted-foreground">{cert.date}</p>
+                    <CardTitle className="text-lg mb-2 text-white">{cert.title}</CardTitle>
+                    <p className="text-sm text-gray-400 mb-1">{cert.organization}</p>
+                    <p className="text-xs text-gray-400">{cert.date}</p>
                   </CardHeader>
                   {cert.description && (
                     <CardContent>
-                      <p className="text-sm text-muted-foreground">{cert.description}</p>
+                      <p className="text-sm text-gray-400">{cert.description}</p>
                     </CardContent>
                   )}
                 </Card>
@@ -129,15 +129,15 @@ export default function Credentials() {
         {/* Skills Matrix */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <Star className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl font-bold">Skills Matrix</h2>
+            <Star className="w-8 h-8 text-[#C77443]" />
+            <h2 className="text-3xl font-bold text-white">Skills Matrix</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {skills.map((skillGroup) => (
-              <Card key={skillGroup.category} className="hover:shadow-lg transition-shadow">
+              <Card key={skillGroup.category} className="hover:shadow-lg transition-shadow bg-[#1A1F2E] border-[#2A2F3E]">
                 <CardHeader>
-                  <CardTitle className="text-xl">{skillGroup.category}</CardTitle>
+                  <CardTitle className="text-xl text-white">{skillGroup.category}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
@@ -157,18 +157,18 @@ export default function Credentials() {
         {awards.length > 0 && (
           <section>
             <div className="flex items-center gap-3 mb-8">
-              <Star className="w-8 h-8 text-primary" />
-              <h2 className="text-3xl font-bold">Awards & Recognition</h2>
+              <Star className="w-8 h-8 text-[#C77443]" />
+              <h2 className="text-3xl font-bold text-white">Awards & Recognition</h2>
             </div>
 
             <div className="space-y-4">
               {awards.map((award) => (
-                <Card key={award.id} className="hover:shadow-lg transition-shadow">
+                <Card key={award.id} className="hover:shadow-lg transition-shadow bg-[#1A1F2E] border-[#2A2F3E]">
                   <CardHeader>
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
-                        <CardTitle className="text-lg mb-1">{award.title}</CardTitle>
-                        <p className="text-sm text-muted-foreground">
+                        <CardTitle className="text-lg mb-1 text-white">{award.title}</CardTitle>
+                        <p className="text-sm text-gray-400">
                           {award.organization} • {award.date}
                         </p>
                       </div>
@@ -176,7 +176,7 @@ export default function Credentials() {
                   </CardHeader>
                   {award.description && (
                     <CardContent>
-                      <p className="text-muted-foreground">{award.description}</p>
+                      <p className="text-gray-400">{award.description}</p>
                     </CardContent>
                   )}
                 </Card>

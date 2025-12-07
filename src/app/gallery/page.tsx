@@ -27,12 +27,12 @@ export default function Gallery() {
     : items
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4">
+    <div className="min-h-screen pt-24 pb-16 px-4 bg-[#0D1321]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Gallery</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">Gallery</h1>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             A collection of moments captured during my travels and creative explorations
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function Gallery() {
             {filteredItems?.map((item) => (
               <Card
                 key={item.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow group"
+                className="overflow-hidden hover:shadow-lg transition-shadow group bg-[#1A1F2E] border-[#2A2F3E]"
               >
                 <div className="aspect-square overflow-hidden">
                   <img
@@ -89,12 +89,12 @@ export default function Gallery() {
                 </div>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-lg">{item.title}</CardTitle>
-                    <Badge variant="secondary" className="text-xs">
+                    <CardTitle className="text-lg text-white">{item.title}</CardTitle>
+                    <Badge variant="secondary" className="text-xs bg-[#2A2F3E] text-gray-300">
                       {item.category}
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                  <p className="text-sm text-gray-400">{item.description}</p>
                 </CardHeader>
               </Card>
             ))}
@@ -103,7 +103,7 @@ export default function Gallery() {
 
         {isError && (
           <div className="text-center py-16">
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-gray-400">
               Failed to load gallery items. Please try again later.
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function Gallery() {
 
         {!isLoading && !isError && (!filteredItems || filteredItems.length === 0) && (
           <div className="text-center py-16">
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-gray-400">
               No items to display. Check back soon!
             </p>
           </div>

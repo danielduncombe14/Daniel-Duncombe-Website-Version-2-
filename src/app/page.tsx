@@ -50,29 +50,43 @@ export default function Home() {
             Traveler / Strategist / Creator
           </p>
           
-          {/* Primary CTA */}
-          <div className="mb-8">
+          {/* CTAs Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <Link href="/credentials">
+              <Button
+                size="lg"
+                className="w-full bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+              >
+                View My Credentials
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+            <Link href="/blog/personal">
+              <Button
+                size="lg"
+                className="w-full bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+              >
+                Read Personal Blog
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
             <Link href="/blog/business">
               <Button
                 size="lg"
-                className="bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+                className="w-full bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
               >
                 Read Business Blog
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-          </div>
-
-          {/* Secondary CTAs */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <Link href="/blog/personal" className="text-white/80 hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">
-              Read Personal Blog
-            </Link>
-            <Link href="/credentials" className="text-white/80 hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">
-              View My Credentials
-            </Link>
-            <Link href="/about" className="text-white/80 hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-1">
-              Who Am I?
+            <Link href="/about">
+              <Button
+                size="lg"
+                className="w-full bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+              >
+                Who Am I?
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
             </Link>
           </div>
         </div>

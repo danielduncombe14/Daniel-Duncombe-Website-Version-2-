@@ -1,10 +1,10 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Moon, Sun } from "lucide-react"
-import { useState, useEffect } from "react"
+import { Menu, X } from "lucide-react"
+import { useState } from "react"
 
 const NAV_ITEMS = [
   { path: "/about", label: "About" },
@@ -17,23 +17,6 @@ const NAV_ITEMS = [
 export function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-  const [theme, setTheme] = useState<"light" | "dark">("light")
-
-  useEffect(() => {
-    // Check system preference or stored preference
-    const stored = localStorage.getItem("theme")
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-    const initialTheme = (stored as "light" | "dark") || (prefersDark ? "dark" : "light")
-    setTheme(initialTheme)
-    document.documentElement.classList.toggle("dark", initialTheme === "dark")
-  }, [])
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light"
-    setTheme(newTheme)
-    localStorage.setItem("theme", newTheme)
-    document.documentElement.classList.toggle("dark", newTheme === "dark")
-  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0D1321]/95 backdrop-blur-md border-b border-[#2A2F3E]">
@@ -55,8 +38,6 @@ export function Navigation() {
                   size="sm"
                   className={pathname === item.path 
                     ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]" 
-                    : item.label === "Business Blog"
-                    ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]"
                     : "text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
                   }
                 >
@@ -64,36 +45,10 @@ export function Navigation() {
                 </Button>
               </Link>
             ))}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="ml-2 text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
-              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-            >
-              {theme === "light" ? (
-                <Moon className="w-4 h-4" />
-              ) : (
-                <Sun className="w-4 h-4" />
-              )}
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
-              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-            >
-              {theme === "light" ? (
-                <Moon className="w-4 h-4" />
-              ) : (
-                <Sun className="w-4 h-4" />
-              )}
-            </Button>
+          <div className="md:hidden">
             <Button
               variant="ghost"
               size="icon"
@@ -114,8 +69,6 @@ export function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     pathname === item.path
-                      ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]"
-                      : item.label === "Business Blog"
                       ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]"
                       : "text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
                   }`}

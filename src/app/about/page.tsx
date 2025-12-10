@@ -115,7 +115,7 @@ export default function About() {
               <CardContent className="p-6">
                 <div className="flex justify-center mb-6">
                   <Avatar className="w-48 h-48">
-                    <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" alt="Profile" />
+                    <AvatarImage src="/About Me - Daniel Duncombe.jpg" alt="Daniel Duncombe" />
                     <AvatarFallback>DD</AvatarFallback>
                   </Avatar>
                 </div>

@@ -3,15 +3,15 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, User, Luggage, Briefcase, Award, Camera } from "lucide-react"
 import { useState } from "react"
 
 const NAV_ITEMS = [
-  { path: "/about", label: "About" },
-  { path: "/blog/personal", label: "Personal Blog" },
-  { path: "/blog/business", label: "Business Blog" },
-  { path: "/credentials", label: "Credentials" },
-  { path: "/gallery", label: "Gallery" },
+  { path: "/about", label: "About", icon: User },
+  { path: "/blog/personal", label: "Personal Blog", icon: Luggage },
+  { path: "/blog/business", label: "Business Blog", icon: Briefcase },
+  { path: "/credentials", label: "Credentials", icon: Award },
+  { path: "/gallery", label: "Gallery", icon: Camera },
 ]
 
 export function Navigation() {
@@ -31,20 +31,24 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className={pathname === item.path 
-                    ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]" 
-                    : "text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
-                  }
-                >
-                  {item.label}
-                </Button>
-              </Link>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon
+              return (
+                <Link key={item.path} href={item.path}>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={pathname === item.path 
+                      ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]" 
+                      : "text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
+                    }
+                  >
+                    <Icon className="w-4 h-4 mr-2" />
+                    {item.label}
+                  </Button>
+                </Link>
+              )
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -63,21 +67,25 @@ export function Navigation() {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-2 border-t border-[#2A2F3E]">
-            {NAV_ITEMS.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <Button
-                  variant="ghost"
-                  className={`w-full justify-start ${
-                    pathname === item.path
-                      ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]"
-                      : "text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Button>
-              </Link>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon
+              return (
+                <Link key={item.path} href={item.path}>
+                  <Button
+                    variant="ghost"
+                    className={`w-full justify-start ${
+                      pathname === item.path
+                        ? "text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]"
+                        : "text-gray-300 hover:text-white hover:bg-[#2A2F3E]"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Icon className="w-4 h-4 mr-2" />
+                    {item.label}
+                  </Button>
+                </Link>
+              )
+            })}
           </div>
         )}
       </div>

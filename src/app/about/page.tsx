@@ -26,17 +26,19 @@ export default function About() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#0D1321]">
-      {/* Hero Banner */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-teal-900 via-blue-900 to-purple-900">
-        <div className="absolute inset-0 bg-black/50" />
-        <h1 className="relative z-10 text-5xl sm:text-6xl font-bold text-white">
-          About Me
-        </h1>
-      </section>
+    <div className="min-h-screen pt-24 pb-16 px-4 bg-[#0D1321]">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+            About Me
+          </h1>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            My journey from finance professional to global explorer
+          </p>
+        </div>
 
-      {/* Content Layout */}
-      <section className="py-16 sm:py-24 px-4 max-w-7xl mx-auto">
+        {/* Content Layout */}
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Main Biography */}
           <div className="lg:col-span-2 space-y-6">
@@ -180,7 +182,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }

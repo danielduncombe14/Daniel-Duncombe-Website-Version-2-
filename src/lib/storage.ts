@@ -141,50 +141,50 @@ class MemStorage {
     // Seed Gallery Items
     const gallery1: GalleryItem = {
       id: "gallery-1",
-      title: "Mountain Sunset",
-      description: "Captured during a hiking trip in the Sierra Nevada mountains",
+      title: "Namibian Desert Dunes",
+      description: "Sunrise over the red sand dunes of Sossusvlei",
       imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-      category: "Landscape",
+      category: "Namibia",
     }
 
     const gallery2: GalleryItem = {
       id: "gallery-2",
-      title: "Urban Architecture",
-      description: "Modern city skyline at dusk",
+      title: "Serengeti Wildlife",
+      description: "Lions resting in the vast plains of Tanzania",
       imageUrl: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=800&fit=crop",
-      category: "Architecture",
+      category: "Tanzania",
     }
 
     const gallery3: GalleryItem = {
       id: "gallery-3",
-      title: "Abstract Patterns",
-      description: "Geometric composition exploring color and form",
+      title: "Taj Mahal at Dawn",
+      description: "The iconic marble monument in Agra",
       imageUrl: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&h=800&fit=crop",
-      category: "Abstract",
+      category: "India",
     }
 
     const gallery4: GalleryItem = {
       id: "gallery-4",
-      title: "Coastal Serenity",
-      description: "Peaceful morning at the beach",
+      title: "Deadvlei Clay Pan",
+      description: "Ancient camelthorn trees in the white clay pan",
       imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop",
-      category: "Landscape",
+      category: "Namibia",
     }
 
     const gallery5: GalleryItem = {
       id: "gallery-5",
-      title: "City Lights",
-      description: "Night photography in downtown",
+      title: "Mount Kilimanjaro",
+      description: "Africa's highest peak at sunset",
       imageUrl: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=600&h=800&fit=crop",
-      category: "Architecture",
+      category: "Tanzania",
     }
 
     const gallery6: GalleryItem = {
       id: "gallery-6",
-      title: "Color Study",
-      description: "Experimental color composition",
+      title: "Varanasi Ghats",
+      description: "Evening prayers along the Ganges River",
       imageUrl: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&h=800&fit=crop",
-      category: "Abstract",
+      category: "India",
     }
 
     // Add gallery items to storage

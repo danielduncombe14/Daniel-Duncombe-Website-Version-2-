@@ -15,8 +15,9 @@ interface Project {
   impactStatement: string
   imageUrl: string
   toolStack?: string[]
-  codeLink?: string
-  liveLink?: string
+  codeLink?: string // External GitHub link
+  liveLink?: string // Can be internal (/page) or external (https://)
+  caseStudyLink?: string // Internal case study page
   isAutomation?: boolean
 }
 
@@ -30,8 +31,9 @@ const projectsData: Project[] = [
     impactStatement: "195+ countries • 3 difficulty tiers • Real-time scoring",
     imageUrl: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&h=600&fit=crop",
     toolStack: ["JavaScript", "HTML5", "CSS3", "REST APIs"],
-    codeLink: "https://github.com/yourusername/backroads-challenge",
-    liveLink: "/backroads-challenge",
+    codeLink: "https://github.com/yourusername/backroads-challenge", // External - opens new tab
+    liveLink: "/backroads-challenge", // Internal - same tab
+    caseStudyLink: "/projects/backroads-challenge-case-study", // Internal - same tab
     isAutomation: false,
   },
   {
@@ -42,8 +44,9 @@ const projectsData: Project[] = [
     impactStatement: "Reduced manual data entry by 80%",
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
     toolStack: ["Python", "Zapier", "Excel", "Power BI"],
-    codeLink: "https://github.com/yourusername/financial-automation",
-    liveLink: "",
+    codeLink: "https://github.com/yourusername/financial-automation", // External - opens new tab
+    liveLink: "", // No live demo (automation runs in background)
+    caseStudyLink: "/projects/financial-automation-case-study", // Internal - same tab (with video/GIF)
     isAutomation: true,
   },
   {
@@ -54,8 +57,9 @@ const projectsData: Project[] = [
     impactStatement: "Engaging 1000+ readers monthly",
     imageUrl: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
     toolStack: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
-    codeLink: "https://github.com/yourusername/travel-blog",
-    liveLink: "https://example.com/travel-blog",
+    codeLink: "https://github.com/yourusername/travel-blog", // External - opens new tab
+    liveLink: "https://example.com/travel-blog", // External - opens new tab
+    caseStudyLink: "/projects/travel-blog-case-study", // Internal - same tab
   },
   {
     id: "project-3",
@@ -65,8 +69,9 @@ const projectsData: Project[] = [
     impactStatement: "Improved decision-making speed by 60%",
     imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
     toolStack: ["Power BI", "SQL", "Python", "Excel"],
-    codeLink: "",
-    liveLink: "https://example.com/risk-dashboard",
+    codeLink: "", // No public code
+    liveLink: "https://example.com/risk-dashboard", // External - opens new tab
+    caseStudyLink: "/projects/risk-dashboard-case-study", // Internal - same tab
   },
   {
     id: "project-4",
@@ -76,8 +81,9 @@ const projectsData: Project[] = [
     impactStatement: "Streamlined publishing process by 70%",
     imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
     toolStack: ["Zapier", "Airtable", "Buffer", "Google Sheets"],
-    codeLink: "",
-    liveLink: "https://example.com/content-workflow",
+    codeLink: "", // No public code (proprietary automation)
+    liveLink: "", // No live demo (automation runs in background)
+    caseStudyLink: "/projects/content-workflow-case-study", // Internal - same tab (with Loom video)
     isAutomation: true,
   },
   {
@@ -88,8 +94,9 @@ const projectsData: Project[] = [
     impactStatement: "Showcasing 200+ travel photographs",
     imageUrl: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&h=600&fit=crop",
     toolStack: ["Next.js", "TypeScript", "Cloudinary"],
-    codeLink: "https://github.com/yourusername/photo-portfolio",
-    liveLink: "https://example.com/portfolio",
+    codeLink: "https://github.com/yourusername/photo-portfolio", // External - opens new tab
+    liveLink: "https://example.com/portfolio", // External - opens new tab
+    caseStudyLink: "/projects/photo-portfolio-case-study", // Internal - same tab
   },
   {
     id: "project-6",
@@ -99,8 +106,9 @@ const projectsData: Project[] = [
     impactStatement: "Reduced operational costs by 35%",
     imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
     toolStack: ["Excel", "Power BI", "Visio", "Python"],
-    codeLink: "",
-    liveLink: "",
+    codeLink: "", // No public code
+    liveLink: "", // No live demo
+    caseStudyLink: "/projects/process-optimization-case-study", // Internal - same tab
   },
 ]
 
@@ -207,16 +215,30 @@ export default function Projects() {
           </CardContent>
         )}
 
-        {/* CTA Buttons - Only render if links exist */}
-        {(project.codeLink || project.liveLink) && (
+        {/* CTA Buttons - Properly handle internal vs external links */}
+        {(project.caseStudyLink || project.codeLink || project.liveLink) && (
           <CardFooter className="flex gap-2 pt-4">
+            {/* Case Study Button - ALWAYS internal, opens in same tab */}
+            {project.caseStudyLink && (
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex-1 border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all"
+                asChild
+              >
+                <Link href={project.caseStudyLink}>
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Case Study
+                </Link>
+              </Button>
+            )}
+            
+            {/* View Code Button - ALWAYS external, opens in new tab */}
             {project.codeLink && (
               <Button
                 variant="outline"
                 size="sm"
-                className={`${
-                  project.liveLink ? "flex-1" : "w-full"
-                } border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all`}
+                className="flex-1 border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all"
                 asChild
               >
                 <Link href={project.codeLink} target="_blank" rel="noopener noreferrer">
@@ -225,19 +247,28 @@ export default function Projects() {
                 </Link>
               </Button>
             )}
+            
+            {/* Live Demo Button - Check if internal or external */}
             {project.liveLink && (
               <Button
                 variant="outline"
                 size="sm"
-                className={`${
-                  project.codeLink ? "flex-1" : "w-full"
-                } border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all`}
+                className="flex-1 border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all"
                 asChild
               >
-                <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Live Demo
-                </Link>
+                {project.liveLink.startsWith('http') ? (
+                  // External link - open in new tab
+                  <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Live Demo ↗
+                  </Link>
+                ) : (
+                  // Internal link - open in same tab
+                  <Link href={project.liveLink}>
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Try It Live
+                  </Link>
+                )}
               </Button>
             )}
           </CardFooter>

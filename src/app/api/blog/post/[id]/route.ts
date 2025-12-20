@@ -18,7 +18,10 @@ export async function GET(
 
     return NextResponse.json(post)
   } catch (error) {
-    console.error('Error fetching blog post:', error)
+    // Log error in development only
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching blog post:', error)
+    }
     return NextResponse.json(
       { error: 'Failed to fetch blog post' },
       { status: 500 }

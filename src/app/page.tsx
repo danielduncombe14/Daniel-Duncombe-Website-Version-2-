@@ -57,47 +57,43 @@ export default function Home() {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-8 leading-tight tracking-wide">
             Crafting Digital Experiences, Exploring the World
           </h1>
-          <p className="text-base sm:text-lg text-gray-400 mb-16 font-light tracking-wider">
+          <p className="text-base sm:text-lg text-gray-400 mb-12 font-light tracking-wider whitespace-nowrap">
             Traveler / Strategist / Creator
           </p>
           
           {/* CTAs Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <div className="grid grid-cols-2 gap-4 w-full max-w-4xl mx-auto px-4">
             <Link href="/credentials">
-              <Button
-                size="lg"
-                className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
+              <button
+                className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
               >
                 View My Credentials
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+                <ArrowRight className="w-4 h-4 flex-shrink-0" />
+              </button>
             </Link>
             <Link href="/blog/personal">
-              <Button
-                size="lg"
-                className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
+              <button
+                className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
               >
                 Read Personal Blog
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+                <ArrowRight className="w-4 h-4 flex-shrink-0" />
+              </button>
             </Link>
             <Link href="/blog/business">
-              <Button
-                size="lg"
-                className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
+              <button
+                className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
               >
                 Read Business Blog
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+                <ArrowRight className="w-4 h-4 flex-shrink-0" />
+              </button>
             </Link>
             <Link href="/about">
-              <Button
-                size="lg"
-                className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
+              <button
+                className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
               >
                 Who Am I?
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+                <ArrowRight className="w-4 h-4 flex-shrink-0" />
+              </button>
             </Link>
           </div>
         </div>

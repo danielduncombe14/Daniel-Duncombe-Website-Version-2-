@@ -32,7 +32,7 @@ export default function Gallery() {
         {/* Header */}
         <div className="mb-12 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">Gallery</h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 leading-relaxed" style={{ maxWidth: '800px', margin: '0 auto' }}>
             A collection of moments captured during my travels and creative explorations
           </p>
         </div>

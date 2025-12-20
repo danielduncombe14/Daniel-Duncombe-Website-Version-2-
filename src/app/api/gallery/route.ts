@@ -6,7 +6,10 @@ export async function GET() {
     const items = storage.getAllGalleryItems()
     return NextResponse.json(items)
   } catch (error) {
-    console.error('Error fetching gallery items:', error)
+    // Log error in development only
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching gallery items:', error)
+    }
     return NextResponse.json(
       { error: 'Failed to fetch gallery items' },
       { status: 500 }

@@ -38,7 +38,7 @@ export default function Credentials() {
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
             Credentials & Expertise
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 leading-relaxed" style={{ maxWidth: '800px', margin: '0 auto' }}>
             A comprehensive overview of my education, certifications, and professional achievements
           </p>
         </div>

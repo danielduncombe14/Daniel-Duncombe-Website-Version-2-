@@ -15,8 +15,47 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "From Boardrooms to Backroads",
-  description: "Personal and business insights from Daniel Duncombe",
+  title: {
+    default: "From Boardrooms to Backroads | Daniel Duncombe",
+    template: "%s | From Boardrooms to Backroads",
+  },
+  description: "Travel, finance, and creative projects by Daniel Duncombe. Exploring the world while sharing insights from boardrooms to backroads.",
+  keywords: ["travel blog", "finance", "digital nomad", "photography", "business insights", "personal development"],
+  authors: [{ name: "Daniel Duncombe" }],
+  creator: "Daniel Duncombe",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://yourdomain.com",
+    siteName: "From Boardrooms to Backroads",
+    title: "From Boardrooms to Backroads | Daniel Duncombe",
+    description: "Travel, finance, and creative projects by Daniel Duncombe",
+    images: [
+      {
+        url: "/og-image.jpg", // Add this image to your public folder
+        width: 1200,
+        height: 630,
+        alt: "From Boardrooms to Backroads",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "From Boardrooms to Backroads | Daniel Duncombe",
+    description: "Travel, finance, and creative projects by Daniel Duncombe",
+    images: ["/og-image.jpg"], // Add this image to your public folder
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function RootLayout({

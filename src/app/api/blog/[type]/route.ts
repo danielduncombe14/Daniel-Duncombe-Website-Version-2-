@@ -18,7 +18,10 @@ export async function GET(
     const posts = storage.getAllBlogPosts(type)
     return NextResponse.json(posts)
   } catch (error) {
-    console.error('Error fetching blog posts:', error)
+    // Log error in development only
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching blog posts:', error)
+    }
     return NextResponse.json(
       { error: 'Failed to fetch blog posts' },
       { status: 500 }

@@ -29,7 +29,7 @@ export default function PersonalBlog() {
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
             Personal Blog
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 leading-relaxed" style={{ maxWidth: '800px', margin: '0 auto' }}>
             Thoughts, reflections, and stories from my personal journey
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function PersonalBlog() {
                 </CardContent>
                 <CardFooter>
                   <Link href={`/blog/personal/${post.id}`}>
-                    <Button variant="ghost" size="sm" className="text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]">
+                    <Button variant="ghost" size="sm" className="text-[var(--brand-orange)] hover:text-[var(--brand-orange-dark)] hover:bg-[var(--border-card)]">
                       Read More
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>

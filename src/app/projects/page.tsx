@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -113,8 +114,8 @@ const projectsData: Project[] = [
 ]
 
 const categoryColors: Record<string, string> = {
-  Automation: "border-[#D1824F] text-[#D1824F]",
-  Development: "border-[#4A9EFF] text-[#4A9EFF]",
+  Automation: "border-[var(--brand-orange)] text-[var(--brand-orange)]",
+  Development: "border-[var(--info-blue)] text-[var(--info-blue)]",
   Analytics: "border-[#9B59B6] text-[#9B59B6]",
   Creative: "border-[#1ABC9C] text-[#1ABC9C]",
 }
@@ -126,46 +127,86 @@ const categoryIcons: Record<string, any> = {
   Creative: Lightbulb,
 }
 
+// Loading skeleton component for project cards
+function ProjectCardSkeleton() {
+  return (
+    <Card className="overflow-hidden bg-[var(--bg-card)] border-[var(--border-card)]">
+      {/* Image skeleton */}
+      <div className="aspect-video bg-gray-800 animate-pulse" />
+      
+      <CardHeader>
+        {/* Title skeleton */}
+        <div className="h-6 bg-gray-800 animate-pulse rounded mb-3" />
+        
+        {/* Impact statement skeleton */}
+        <div className="h-4 bg-gray-800 animate-pulse rounded w-3/4 mb-3" />
+        
+        {/* Description skeleton */}
+        <div className="space-y-2">
+          <div className="h-3 bg-gray-800 animate-pulse rounded" />
+          <div className="h-3 bg-gray-800 animate-pulse rounded w-5/6" />
+        </div>
+      </CardHeader>
+      
+      <CardContent className="pt-0">
+        {/* Tool stack skeleton */}
+        <div className="flex flex-wrap gap-2">
+          <div className="h-6 w-16 bg-gray-800 animate-pulse rounded" />
+          <div className="h-6 w-20 bg-gray-800 animate-pulse rounded" />
+          <div className="h-6 w-14 bg-gray-800 animate-pulse rounded" />
+        </div>
+      </CardContent>
+      
+      <CardFooter className="flex gap-2 pt-4">
+        <div className="flex-1 h-9 bg-gray-800 animate-pulse rounded" />
+        <div className="flex-1 h-9 bg-gray-800 animate-pulse rounded" />
+      </CardFooter>
+    </Card>
+  )
+}
+
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
-  // Filter function - dynamically filter projects by category
+  // Extract unique categories from projectsData
+  const categories = Array.from(new Set(projectsData.map((p) => p.category)))
+
+  // Filter projects based on selected category
   const filteredProjects = useMemo(() => {
-    if (!selectedCategory) {
+    if (selectedCategory === null) {
       return projectsData
     }
     return projectsData.filter((project) => project.category === selectedCategory)
   }, [selectedCategory])
 
-  // Get unique categories for filter buttons
-  const categories = useMemo(() => {
-    return Array.from(new Set(projectsData.map((p) => p.category)))
-  }, [])
-
-  // Render project card
+  // Function to render a project card
   const renderProjectCard = (project: Project) => {
     const CategoryIcon = categoryIcons[project.category]
-    
+
     return (
       <Card
         key={project.id}
-        className="group overflow-hidden bg-[#1A1F2E]/60 backdrop-blur-sm border-[#2A2F3E] hover:border-[#D1824F] transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#D1824F]/10"
+        className="group overflow-hidden bg-[var(--bg-card)] backdrop-blur-sm border-[var(--border-card)] hover:border-[var(--brand-orange)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--card-shadow-hover)]"
       >
-        {/* Thumbnail */}
-        <div className="relative aspect-video overflow-hidden">
-          <img
+        {/* Thumbnail with Next.js Image - Fixes CLS */}
+        <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+          <Image
             src={project.imageUrl}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            priority={false}
           />
           
           {/* Category Badge */}
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-3 right-3 z-10">
             <Badge
               variant="outline"
               className={`${
                 categoryColors[project.category]
-              } bg-[#0D1321]/80 backdrop-blur-sm border-2 font-semibold px-3 py-1 flex items-center gap-1`}
+              } bg-[var(--bg-primary)]/80 backdrop-blur-sm border-2 font-semibold px-3 py-1 flex items-center gap-1`}
             >
               <CategoryIcon className="w-3 h-3" />
               {project.category}
@@ -174,13 +215,13 @@ export default function Projects() {
         </div>
 
         <CardHeader>
-          <CardTitle className="text-xl text-white mb-2 group-hover:text-[#D1824F] transition-colors">
+          <CardTitle className="text-xl text-[var(--text-primary)] mb-2 group-hover:text-[var(--brand-orange)] transition-colors">
             {project.title}
           </CardTitle>
           
           {/* Impact Statement */}
-          <div className="text-sm font-semibold text-[#D1824F] mb-3 flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#D1824F] rounded-full animate-pulse"></span>
+          <div className="text-sm font-semibold text-[var(--brand-orange)] mb-3 flex items-center gap-2">
+            <span className="w-2 h-2 bg-[var(--brand-orange)] rounded-full animate-pulse"></span>
             {project.impactStatement}
           </div>
 
@@ -192,7 +233,7 @@ export default function Projects() {
         {/* Tool Stack */}
         {project.toolStack && project.toolStack.length > 0 && (
           <CardContent className="pt-0">
-            <div className={project.isAutomation ? "border-t border-[#2A2F3E] pt-4" : ""}>
+            <div className={project.isAutomation ? "border-t border-[var(--border-card)] pt-4" : ""}>
               {project.isAutomation && (
                 <p className="text-xs text-gray-500 uppercase tracking-wider mb-2 font-semibold">
                   Tech Stack
@@ -203,8 +244,8 @@ export default function Projects() {
                   <Badge
                     key={tool}
                     variant="secondary"
-                    className={`bg-[#0D1321] text-gray-300 text-xs border border-[#2A2F3E] ${
-                      project.isAutomation ? "hover:border-[#D1824F]" : ""
+                    className={`bg-[var(--bg-primary)] text-gray-300 text-xs border border-[var(--border-card)] ${
+                      project.isAutomation ? "hover:border-[var(--brand-orange)]" : ""
                     } transition-colors`}
                   >
                     {tool}
@@ -223,7 +264,7 @@ export default function Projects() {
               <Button
                 variant="outline"
                 size="sm"
-                className="flex-1 border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all"
+                className="flex-1 border-[var(--brand-orange)] text-[var(--brand-orange)] hover:bg-[var(--brand-orange)] hover:text-white transition-all"
                 asChild
               >
                 <Link href={project.caseStudyLink}>
@@ -238,7 +279,7 @@ export default function Projects() {
               <Button
                 variant="outline"
                 size="sm"
-                className="flex-1 border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all"
+                className="flex-1 border-[var(--brand-orange)] text-[var(--brand-orange)] hover:bg-[var(--brand-orange)] hover:text-white transition-all"
                 asChild
               >
                 <Link href={project.codeLink} target="_blank" rel="noopener noreferrer">
@@ -253,7 +294,7 @@ export default function Projects() {
               <Button
                 variant="outline"
                 size="sm"
-                className="flex-1 border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all"
+                className="flex-1 border-[var(--brand-orange)] text-[var(--brand-orange)] hover:bg-[var(--brand-orange)] hover:text-white transition-all"
                 asChild
               >
                 {project.liveLink.startsWith('http') ? (
@@ -278,11 +319,11 @@ export default function Projects() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 bg-[#0D1321]">
+    <div className="min-h-screen pt-24 pb-16 px-4 bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-[var(--text-primary)]">
             Projects
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -297,8 +338,8 @@ export default function Projects() {
             onClick={() => setSelectedCategory(null)}
             className={`${
               selectedCategory === null
-                ? "bg-[#D1824F] hover:bg-[#B56535] text-white"
-                : "border-[#2A2F3E] text-gray-300 hover:border-[#D1824F] hover:text-[#D1824F]"
+                ? "bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white"
+                : "border-[var(--border-card)] text-gray-300 hover:border-[var(--brand-orange)] hover:text-[var(--brand-orange)]"
             } transition-all`}
           >
             All Projects ({projectsData.length})
@@ -313,8 +354,8 @@ export default function Projects() {
                 onClick={() => setSelectedCategory(category)}
                 className={`${
                   selectedCategory === category
-                    ? "bg-[#D1824F] hover:bg-[#B56535] text-white"
-                    : "border-[#2A2F3E] text-gray-300 hover:border-[#D1824F] hover:text-[#D1824F]"
+                    ? "bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white"
+                    : "border-[var(--border-card)] text-gray-300 hover:border-[var(--brand-orange)] hover:text-[var(--brand-orange)]"
                 } transition-all`}
               >
                 <Icon className="w-4 h-4 mr-2" />
@@ -324,28 +365,29 @@ export default function Projects() {
           })}
         </div>
 
-        {/* Projects Grid - Dynamic rendering */}
+        {/* Projects Grid - Dynamic rendering with loading state */}
         <div 
           id="project-grid"
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
-          {filteredProjects.map((project) => renderProjectCard(project))}
+          {isLoading ? (
+            // Show skeleton cards while loading
+            <>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <ProjectCardSkeleton key={i} />
+              ))}
+            </>
+          ) : (
+            // Show actual project cards
+            filteredProjects.map((project) => renderProjectCard(project))
+          )}
         </div>
-
-        {/* Empty state */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-xl text-gray-400">
-              No projects found in this category.
-            </p>
-          </div>
-        )}
 
         {/* Additional Section - Optional CTA */}
         <div className="mt-16 text-center">
-          <Card className="bg-[#1A1F2E]/60 backdrop-blur-sm border-[#2A2F3E] max-w-2xl mx-auto">
+          <Card className="bg-[var(--bg-card)] backdrop-blur-sm border-[var(--border-card)] max-w-2xl mx-auto">
             <CardContent className="py-8 px-6">
-              <h3 className="text-2xl font-bold text-white mb-3">
+              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-3">
                 Interested in Collaborating?
               </h3>
               <p className="text-gray-400 mb-6">
@@ -353,7 +395,7 @@ export default function Projects() {
               </p>
               <Button
                 size="lg"
-                className="bg-[#D1824F] hover:bg-[#B56535] text-white font-semibold transition-all hover:-translate-y-1"
+                className="bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white font-semibold transition-all hover:-translate-y-1"
                 asChild
               >
                 <Link href="/about">

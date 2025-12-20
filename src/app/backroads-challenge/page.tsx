@@ -1,11 +1,53 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+// Quiz Skeleton Component for loading state
+function QuizSkeleton() {
+  return (
+    <div className="quiz-section">
+      {/* Flag container skeleton */}
+      <div className="flag-container">
+        <div className="w-full h-full bg-gray-800 animate-pulse flex items-center justify-center">
+          <span className="text-4xl opacity-30">🏴</span>
+        </div>
+      </div>
+
+      {/* Question container skeleton */}
+      <div className="question-container">
+        <div className="clue-text opacity-50">Loading</div>
+        <div className="h-8 bg-gray-800 animate-pulse rounded w-3/4 mx-auto mb-4" />
+      </div>
+
+      {/* Options skeleton */}
+      <div className="options-container">
+        {[1, 2, 3, 4].map((i) => (
+          <div
+            key={i}
+            className="option-btn pointer-events-none"
+            style={{ opacity: 0.5 }}
+          >
+            <div className="h-5 bg-gray-700 animate-pulse rounded" />
+          </div>
+        ))}
+      </div>
+
+      {/* Button container skeleton */}
+      <div className="button-container">
+        <div className="btn btn-primary pointer-events-none opacity-50">
+          Loading Quiz...
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function BackroadsChallenge() {
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
     // Load the CSS file
     const link = document.createElement('link')
@@ -17,6 +59,12 @@ export default function BackroadsChallenge() {
     const script = document.createElement('script')
     script.src = '/backroads-quiz.js'
     script.async = true
+    
+    // Hide skeleton once quiz loads
+    script.onload = () => {
+      setTimeout(() => setIsLoading(false), 500)
+    }
+    
     document.body.appendChild(script)
 
     // Cleanup function
@@ -27,14 +75,14 @@ export default function BackroadsChallenge() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#0D1321]">
+    <div className="min-h-screen bg-[var(--bg-primary)]">
       {/* Back Button */}
       <div className="fixed top-20 left-4 z-50">
         <Link href="/projects">
           <Button
             variant="outline"
             size="sm"
-            className="border-[#D1824F] text-[#D1824F] hover:bg-[#D1824F] hover:text-white transition-all bg-[#0D1321]/80 backdrop-blur-sm"
+            className="border-[var(--brand-orange)] text-[var(--brand-orange)] hover:bg-[var(--brand-orange)] hover:text-white transition-all bg-[var(--bg-primary)]/80 backdrop-blur-sm"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Projects
@@ -94,7 +142,10 @@ export default function BackroadsChallenge() {
         </header>
 
         <main id="game-container">
-          <div className="quiz-section">
+          {/* Show skeleton while loading */}
+          {isLoading && <QuizSkeleton />}
+          
+          <div className="quiz-section" style={{ display: isLoading ? 'none' : 'flex' }}>
             {/* Timer/Fuel Gauge for Medium and Hard */}
             <div className="fuel-gauge hidden" id="fuel-gauge">
               <div className="fuel-fill" id="fuel-fill"></div>

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
@@ -34,21 +35,26 @@ export default function Home() {
   const featuredGallery = !galleryError ? galleryItems?.[0] : undefined
 
   return (
-    <div className="min-h-screen bg-[#0D1321]">
+    <div className="min-h-screen bg-[var(--bg-primary)]">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0D1321]">
-        {/* Hero Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&h=1080&fit=crop")',
-          }}
-        />
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[var(--bg-primary)]">
+        {/* Hero Background Image - Optimized with Next.js Image */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&h=1080&fit=crop"
+            alt="Travel background"
+            fill
+            priority={true}
+            quality={85}
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
         {/* Dark overlay for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D1321]/80 via-[#0D1321]/70 to-[#0D1321]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/80 via-[var(--bg-primary)]/70 to-[var(--bg-primary)]" />
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto py-16">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight tracking-wide">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-8 leading-tight tracking-wide">
             Crafting Digital Experiences, Exploring the World
           </h1>
           <p className="text-base sm:text-lg text-gray-400 mb-16 font-light tracking-wider">
@@ -60,7 +66,7 @@ export default function Home() {
             <Link href="/credentials">
               <Button
                 size="lg"
-                className="w-full bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
+                className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
               >
                 View My Credentials
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -69,7 +75,7 @@ export default function Home() {
             <Link href="/blog/personal">
               <Button
                 size="lg"
-                className="w-full bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
+                className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
               >
                 Read Personal Blog
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -78,7 +84,7 @@ export default function Home() {
             <Link href="/blog/business">
               <Button
                 size="lg"
-                className="w-full bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
+                className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
               >
                 Read Business Blog
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -87,7 +93,7 @@ export default function Home() {
             <Link href="/about">
               <Button
                 size="lg"
-                className="w-full bg-[#C77443] hover:bg-[#B56535] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
+                className="w-full bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px]"
               >
                 Who Am I?
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -98,26 +104,29 @@ export default function Home() {
       </section>
 
       {/* Featured Content Grid */}
-      <section className="py-16 sm:py-24 px-4 max-w-7xl mx-auto bg-[#0D1321]">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-white">
+      <section className="py-16 sm:py-24 px-4 max-w-7xl mx-auto bg-[var(--bg-primary)]">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[var(--text-primary)]">
           Featured Content
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {/* Latest Personal Blog */}
           {personalError ? (
-            <Card className="overflow-hidden bg-[#1A1F2E] border-[#2A2F3E]">
+            <Card className="overflow-hidden bg-[var(--bg-card)] border-[var(--border-card)]">
               <CardContent className="p-8 text-center">
                 <p className="text-gray-400">Unable to load personal blog posts</p>
               </CardContent>
             </Card>
           ) : latestPersonal ? (
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow bg-[#1A1F2E] border-[#2A2F3E]">
-              <div className="aspect-[16/9] overflow-hidden">
-                <img
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow bg-[var(--bg-card)] border-[var(--border-card)]">
+              <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                <Image
                   src={latestPersonal.featuredImage}
                   alt={latestPersonal.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  priority={false}
                 />
               </div>
               <CardHeader>
@@ -127,14 +136,14 @@ export default function Home() {
                   <Clock className="w-4 h-4 ml-2" />
                   <span>{latestPersonal.readTime} min</span>
                 </div>
-                <CardTitle className="text-xl text-white">{latestPersonal.title}</CardTitle>
+                <CardTitle className="text-xl text-[var(--text-primary)]">{latestPersonal.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-400">{latestPersonal.excerpt}</p>
               </CardContent>
               <CardFooter>
                 <Link href={`/blog/personal/${latestPersonal.id}`}>
-                  <Button variant="ghost" size="sm" className="text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]">
+                  <Button variant="ghost" size="sm" className="text-[var(--brand-orange)] hover:text-[var(--brand-orange-dark)] hover:bg-[var(--border-card)]">
                     Read More
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -145,18 +154,21 @@ export default function Home() {
 
           {/* Latest Business Blog */}
           {businessError ? (
-            <Card className="overflow-hidden bg-[#1A1F2E] border-[#2A2F3E]">
+            <Card className="overflow-hidden bg-[var(--bg-card)] border-[var(--border-card)]">
               <CardContent className="p-8 text-center">
                 <p className="text-gray-400">Unable to load business blog posts</p>
               </CardContent>
             </Card>
           ) : latestBusiness ? (
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow bg-[#1A1F2E] border-[#2A2F3E]">
-              <div className="aspect-[16/9] overflow-hidden">
-                <img
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow bg-[var(--bg-card)] border-[var(--border-card)]">
+              <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                <Image
                   src={latestBusiness.featuredImage}
                   alt={latestBusiness.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  priority={false}
                 />
               </div>
               <CardHeader>
@@ -166,14 +178,14 @@ export default function Home() {
                   <Clock className="w-4 h-4 ml-2" />
                   <span>{latestBusiness.readTime} min</span>
                 </div>
-                <CardTitle className="text-xl text-white">{latestBusiness.title}</CardTitle>
+                <CardTitle className="text-xl text-[var(--text-primary)]">{latestBusiness.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-400">{latestBusiness.excerpt}</p>
               </CardContent>
               <CardFooter>
                 <Link href={`/blog/business/${latestBusiness.id}`}>
-                  <Button variant="ghost" size="sm" className="text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]">
+                  <Button variant="ghost" size="sm" className="text-[var(--brand-orange)] hover:text-[var(--brand-orange-dark)] hover:bg-[var(--border-card)]">
                     Read More
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -184,29 +196,32 @@ export default function Home() {
 
           {/* Featured Gallery */}
           {galleryError ? (
-            <Card className="overflow-hidden bg-[#1A1F2E] border-[#2A2F3E]">
+            <Card className="overflow-hidden bg-[var(--bg-card)] border-[var(--border-card)]">
               <CardContent className="p-8 text-center">
                 <p className="text-gray-400">Unable to load gallery items</p>
               </CardContent>
             </Card>
           ) : featuredGallery ? (
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow bg-[#1A1F2E] border-[#2A2F3E]">
-              <div className="aspect-[16/9] overflow-hidden">
-                <img
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow bg-[var(--bg-card)] border-[var(--border-card)]">
+              <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                <Image
                   src={featuredGallery.imageUrl}
                   alt={featuredGallery.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  priority={false}
                 />
               </div>
               <CardHeader>
-                <CardTitle className="text-xl text-white">{featuredGallery.title}</CardTitle>
+                <CardTitle className="text-xl text-[var(--text-primary)]">{featuredGallery.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-400">{featuredGallery.description}</p>
               </CardContent>
               <CardFooter>
                 <Link href="/gallery">
-                  <Button variant="ghost" size="sm" className="text-[#C77443] hover:text-[#B56535] hover:bg-[#2A2F3E]">
+                  <Button variant="ghost" size="sm" className="text-[var(--brand-orange)] hover:text-[var(--brand-orange-dark)] hover:bg-[var(--border-card)]">
                     View Gallery
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>

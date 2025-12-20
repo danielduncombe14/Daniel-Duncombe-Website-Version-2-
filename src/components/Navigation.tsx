@@ -3,13 +3,14 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Menu, X, User, Luggage, Briefcase, Award, Camera } from "lucide-react"
+import { Menu, X, User, Luggage, Briefcase, Award, Camera, FolderKanban } from "lucide-react"
 import { useState } from "react"
 
 const NAV_ITEMS = [
   { path: "/about", label: "About", icon: User },
   { path: "/blog/personal", label: "Personal Blog", icon: Luggage },
   { path: "/blog/business", label: "Business Blog", icon: Briefcase },
+  { path: "/projects", label: "Projects", icon: FolderKanban },
   { path: "/credentials", label: "Credentials", icon: Award },
   { path: "/gallery", label: "Gallery", icon: Camera },
 ]

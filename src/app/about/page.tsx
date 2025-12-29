@@ -46,45 +46,23 @@ export default function About() {
               <h2 className="text-3xl font-bold mb-4 text-white">My Story</h2>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  I'm Daniel, a finance and accounting professional who stepped
-                  away from the corporate world to embark on a year-long journey
-                  across the globe. After more than eight years working with
-                  clients across industries—and being recognized as an
-                  Exceptional Employee at both KPMG and CrossCountry—I realized
-                  I wanted to experience the world more deeply and reconnect
-                  with my curiosity, creativity, and sense of adventure.
+                  I'm Daniel. I'm a finance and accounting professional who stepped away from the corporate world to spend a year traveling across the globe. After more than eight years working with clients across industries and being recognized as an Exceptional Employee at both KPMG and CrossCountry, I reached a point where I wanted something more. I wanted to slow down, see the world properly, and reconnect with my curiosity, creativity, and sense of adventure.
                 </p>
 
                 <p>
-                  My career has taught me the importance of precision,
-                  integrity, and building strong relationships. Whether managing
-                  complex audits, improving internal controls, or supporting
-                  operational teams, I've always approached work with a balance
-                  of analytical thinking and empathy.
+                  My career taught me the value of precision, integrity, and strong relationships. I've worked on business transformation projects, data projects, complex audits, and operational support, always trying to balance analytical thinking with clear communication to my stakeholders to deliver the results they need.
                 </p>
 
                 <p>
-                  In 2024–2025, I shifted gears and began traveling full-time.
-                  My journey has taken me from African safaris and remote
-                  islands to historic cities, mountains, and deserts. Along the
-                  way, I've rediscovered my love for storytelling, meeting new
-                  people, documenting experiences, and diving into cultures far
-                  from home.
+                  In 2025, I made a shift and began traveling full time. Since then, I've found myself on African safaris, remote islands, and in historic cities, mountains, and deserts. Along the way, I rediscovered how much I enjoy storytelling, meeting people from different backgrounds, documenting experiences, and immersing myself in cultures far from home.
                 </p>
 
                 <p>
-                  Today, I combine my professional background with a passion for
-                  exploring the world, creating meaningful content, and sharing
-                  what I learn. Whether I'm writing, photographing wildlife,
-                  developing new ideas, or planning future projects, I'm driven
-                  by curiosity and a desire to grow.
+                  Today, I bring together my professional background and my love of travel and exploration. I create, write, photograph, and think through new ideas as I go. Whether I'm planning future projects, capturing wildlife, or reflecting on what I've learned, curiosity is what drives me.
                 </p>
 
                 <p>
-                  This website—
-                  <span className="font-medium">From Boardrooms to Backroads</span>
-                  — is a reflection of that journey: a space where structured
-                  thinking meets spontaneous adventure.
+                  'From Boardrooms to Backroads' is a reflection of that journey. It's a place where structured thinking meets spontaneous adventure.
                 </p>
               </div>
             </div>
@@ -93,16 +71,10 @@ export default function About() {
               <h2 className="text-3xl font-bold mb-4 text-white">My Philosophy</h2>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  I believe the best growth comes from stepping outside of what
-                  feels familiar—whether in work, travel, or personal
-                  development. Every place, project, and person teaches
-                  something new if you're open to it.
+                  I believe real growth comes from stepping outside what feels familiar, whether that's in work, travel, or life in general. Every place, project, and person has something to teach you if you're open to it.
                 </p>
                 <p>
-                  I value intentional living, continuous learning, and the
-                  balance between structure and curiosity. And whether I'm
-                  building financial models or trekking across rural landscapes,
-                  I try to stay grounded, grateful, and open to the unexpected.
+                  I value intentional living, continuous learning, and finding the balance between structure and curiosity. Whether I'm building financial models or trekking through rural landscapes, I try to stay grounded, grateful, and open to whatever comes next.
                 </p>
               </div>
             </div>

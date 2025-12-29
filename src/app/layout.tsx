@@ -23,6 +23,14 @@ export const metadata: Metadata = {
   keywords: ["travel blog", "finance", "digital nomad", "photography", "business insights", "personal development"],
   authors: [{ name: "Daniel Duncombe" }],
   creator: "Daniel Duncombe",
+  icons: {
+    icon: [
+      { url: '/logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/logo.png',
+    shortcut: '/logo.png',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

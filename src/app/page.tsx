@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
 import { useQuery } from "@tanstack/react-query"
 import type { BlogPost, GalleryItem } from "@/lib/types"
@@ -38,8 +39,8 @@ export default function Home() {
     <div className="min-h-screen bg-[var(--bg-primary)]">
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[var(--bg-primary)]">
-        {/* Hero Background Image - Optimized with Next.js Image */}
-        <div className="absolute inset-0 opacity-20">
+        {/* Hero Background Image - Brighter and More Visible */}
+        <div className="absolute inset-0 opacity-40">
           <Image
             src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&h=1080&fit=crop"
             alt="Travel background"
@@ -50,51 +51,91 @@ export default function Home() {
             className="object-cover object-center"
           />
         </div>
-        {/* Dark overlay for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/80 via-[var(--bg-primary)]/70 to-[var(--bg-primary)]" />
+        {/* Lighter gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/60 via-[var(--bg-primary)]/50 to-[var(--bg-primary)]/70" />
 
+        {/* Glassmorphism Hero Card */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto py-16">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-8 leading-tight tracking-wide">
-            Crafting Digital Experiences, Exploring the World
-          </h1>
-          <p className="text-base sm:text-lg text-gray-400 mb-12 font-light tracking-wider whitespace-nowrap">
-            Traveler / Strategist / Creator
-          </p>
-          
-          {/* CTAs Grid */}
-          <div className="grid grid-cols-2 gap-4 w-full max-w-4xl mx-auto px-4">
-            <Link href="/credentials">
-              <button
-                className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
-              >
-                View My Credentials
-                <ArrowRight className="w-4 h-4 flex-shrink-0" />
-              </button>
-            </Link>
-            <Link href="/blog/personal">
-              <button
-                className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
-              >
-                Read Personal Blog
-                <ArrowRight className="w-4 h-4 flex-shrink-0" />
-              </button>
-            </Link>
-            <Link href="/blog/business">
-              <button
-                className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
-              >
-                Read Business Blog
-                <ArrowRight className="w-4 h-4 flex-shrink-0" />
-              </button>
-            </Link>
-            <Link href="/about">
-              <button
-                className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
-              >
-                Who Am I?
-                <ArrowRight className="w-4 h-4 flex-shrink-0" />
-              </button>
-            </Link>
+          <div 
+            className="backdrop-blur-xl bg-white/5 rounded-3xl border border-white/10 shadow-2xl px-8 py-12 sm:px-12 sm:py-16"
+            style={{
+              boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)',
+            }}
+          >
+            {/* Content wrapper with controlled spacing */}
+            <div className="flex flex-col items-center gap-6">
+              {/* Profile Avatar */}
+              <div className="relative">
+                <Avatar className="w-28 h-28 sm:w-32 sm:h-32 ring-4 ring-white/20 ring-offset-4 ring-offset-transparent">
+                  <AvatarImage src="/About Me - Daniel Duncombe.jpg" alt="Daniel Duncombe" />
+                  <AvatarFallback className="text-2xl bg-[var(--brand-orange)] text-white">DD</AvatarFallback>
+                </Avatar>
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 rounded-full bg-[var(--brand-orange)]/20 blur-xl -z-10"></div>
+              </div>
+
+              {/* Text content group with tighter spacing */}
+              <div className="flex flex-col gap-4">
+                {/* Main Headline with Text Shadow */}
+                <h1 
+                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-wide"
+                  style={{
+                    textShadow: '0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(209, 130, 79, 0.3)',
+                    lineHeight: '1.2',
+                  }}
+                >
+                  Crafting Digital Experiences, Exploring the World
+                </h1>
+
+                {/* Sub-headline - High Contrast */}
+                <p 
+                  className="text-base sm:text-lg font-light tracking-wider"
+                  style={{
+                    color: '#f0f0f0',
+                    textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)',
+                    lineHeight: '1.5',
+                  }}
+                >
+                  Traveler / Strategist / Creator
+                </p>
+              </div>
+              
+              {/* CTAs Grid with proper top spacing */}
+              <div className="grid grid-cols-2 gap-4 w-full max-w-4xl mt-6">
+                <Link href="/credentials">
+                  <button
+                    className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
+                  >
+                    View My Credentials
+                    <ArrowRight className="w-4 h-4 flex-shrink-0" />
+                  </button>
+                </Link>
+                <Link href="/blog/personal">
+                  <button
+                    className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
+                  >
+                    Read Personal Blog
+                    <ArrowRight className="w-4 h-4 flex-shrink-0" />
+                  </button>
+                </Link>
+                <Link href="/blog/business">
+                  <button
+                    className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
+                  >
+                    Read Business Blog
+                    <ArrowRight className="w-4 h-4 flex-shrink-0" />
+                  </button>
+                </Link>
+                <Link href="/about">
+                  <button
+                    className="w-full min-h-[100px] flex items-center justify-center gap-2 text-white px-6 py-4 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:translate-y-[-2px] whitespace-nowrap bg-[var(--brand-orange)] hover:bg-[var(--brand-orange-dark)]"
+                  >
+                    Who Am I?
+                    <ArrowRight className="w-4 h-4 flex-shrink-0" />
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
